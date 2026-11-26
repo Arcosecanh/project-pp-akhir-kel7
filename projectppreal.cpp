@@ -48,3 +48,20 @@ int main() {
                     y[i] = -1;
                 }
             }
+werase(w);
+        box(w, 0, 0);
+        mvwprintw(w, 0, 2, " Skor: %d  Nyawa: %d ", skor, nyawa);
+        for (int i = 0; i < N; i++)
+            if (y[i] > 0) mvwaddch(w, y[i], x[i], bom[i] ? 'X' : '*');
+        mvwprintw(w, H - 2, kx, "\\_____/");
+        wrefresh(w);
+    }   // penutup while
+
+    wtimeout(w, -1);
+    mvwprintw(w, H / 2, 10, "GAME OVER - Skor: %d", skor);
+    mvwprintw(w, H / 2 + 1, 10, "Tekan tombol apa saja");
+    wrefresh(w);
+    wgetch(w);
+    endwin();
+    return 0;
+}
