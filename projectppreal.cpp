@@ -17,7 +17,18 @@ int main() {
     keypad(w, TRUE);
     wtimeout(w, 50);
 
-// bagian sekar taro di sini yeah
+    int x[N], y[N], bom[N];
+    for (int i = 0; i < N; i++) y[i] = -1;   // y = -1 artinya slot kosong
+    int kx = (W - 7) / 2;                    // keranjang mulai di tengah
+    int skor = 0, nyawa = 3, frame = 0;
+
+    while (nyawa > 0) {
+        int k = wgetch(w);
+        if (k == 'q') break;
+        if (k == KEY_LEFT)  kx -= 2;
+        if (k == KEY_RIGHT) kx += 2;
+        if (kx < 1) kx = 1;
+        if (kx > W - 8) kx = W - 8;
 
         frame++;
         int jeda = 4 - skor / 100;           // makin tinggi skor, makin cepat
